@@ -1,0 +1,28 @@
+@import "_nullstyle";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@font-face {
+    // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
+    font-family: "StarJediOutline"; 
+    // адрес шрифта и тип 
+    src: url("../fonts/StarJediOutline-y0xm.woff") format('woff'); 
+    font-style: normal; 
+    font-weight: normal; 
+    } 
+    
+@font-face {
+    font-family: "AnakinmonoRegular"; 
+    src: url("../fonts/AnakinmonoRegular.woff") format('woff'); 
+    font-style: normal; 
+    font-weight: normal; 
+    } 
+
+    
+@import "_header";
+
+@import "_menu";
+
+@import "_eventContainer";
+
+@import "_loader"

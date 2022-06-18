@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    z-index:2;
+}
+
+.menu-container {
+    width: 255px;
+    height: 100%;
+}
+
+.filmInfo {
+    margin: 0 0 20px 0;
+}
+.eventContainer {
+    background-color: rgb(49, 49, 49);
+    margin: 56px 0 0 0;
+    height: 100%;
+    width: calc(100% - 258px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.episod_title {
+    letter-spacing: 2px;
+    margin: 0 0 25px 0;
+    font-family: "StarJediOutline";
+    text-align: center;
+    color: rgb(255, 255, 255,);
+    font-size: 30px;
+}
+
+.film_description{
+    text-indent: 25px;
+    text-align: justify;
+    line-height: 25px;
+    margin: 0 auto;
+    max-width: 900px;
+    font-family: "AnakinmonoRegular";
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.release_data, .link_to_movie {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px 0 0 ;
+    margin-top: 20px;
+    font-family: "AnakinmonoRegular";
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+.link_to_movie span{
+    padding: 0 10px 0 0;
+}
+
+.release_data{
+    display: block;
+}
+
+.characters_container{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.character_item {
+    text-align: center;
+    font-family: "AnakinmonoRegular";
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    margin: 10px 20px 0 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: auto;
+    border: 1px solid grey;
+}
+
+.errorMessage {
+    text-align: center;
+    padding-top: 40vh;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    height: 100vh;
+}
+
+@media (max-width: 767px){
+    .eventContainer{
+        width: 100%;
+    }
+}
