@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    z-index:2;
+    z-index: 2;
 }
 
 .menu-container {
@@ -13,7 +13,7 @@
     margin: 0 0 20px 0;
 }
 .eventContainer {
-    background-color: rgb(49, 49, 49);
+    // background-color: rgb(49, 49, 49);
     margin: 56px 0 0 0;
     height: 100%;
     width: calc(100% - 258px);
@@ -27,11 +27,11 @@
     margin: 0 0 25px 0;
     font-family: "StarJediOutline";
     text-align: center;
-    color: rgb(255, 255, 255,);
+    color: rgb(255, 255, 255);
     font-size: 30px;
 }
 
-.film_description{
+.film_description {
     text-indent: 25px;
     text-align: justify;
     line-height: 25px;
@@ -42,25 +42,26 @@
     color: rgb(255, 255, 255);
 }
 
-.release_data, .link_to_movie {
+.release_data,
+.link_to_movie {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 10px 0 0 ;
+    padding: 0 10px 0 0;
     margin-top: 20px;
     font-family: "AnakinmonoRegular";
     color: rgb(255, 255, 255);
     font-size: 16px;
 }
 
-.link_to_movie span{
+.link_to_movie span {
     padding: 0 10px 0 0;
 }
 
-.release_data{
+.release_data {
     display: block;
 }
 
-.characters_container{
+.characters_container {
     max-width: 900px;
     margin: 0 auto;
 }
@@ -85,8 +86,8 @@
     height: 100vh;
 }
 
-@media (max-width: 767px){
-    .eventContainer{
+@media (max-width: 767px) {
+    .eventContainer {
         width: 100%;
     }
 }

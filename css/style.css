@@ -1,6 +1,9 @@
 @charset "UTF-8";
-/*Обнуление*/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*Обнуление*/
 * {
   padding: 0;
   margin: 0;
@@ -72,14 +75,14 @@ h1, h2, h3, h4, h5, h6 {
 /*----------------------------------------*/
 @font-face {
   font-family: "StarJediOutline";
-  src: url("../fonts/StarJediOutline-y0xm.woff") format("woff");
+  src: url("../assets/fonts/StarJediOutline-y0xm.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
   font-family: "AnakinmonoRegular";
-  src: url("../fonts/AnakinmonoRegular.woff") format("woff");
+  src: url("../assets/fonts/AnakinmonoRegular.woff") format("woff");
   font-style: normal;
   font-weight: normal;
 }
@@ -352,7 +355,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .eventContainer {
-  background-color: #313131;
   margin: 56px 0 0 0;
   height: 100%;
   width: calc(100% - 258px);
@@ -387,7 +389,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-.release_data, .link_to_movie {
+.release_data,
+.link_to_movie {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 10px 0 0;
@@ -433,7 +436,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 767px) {
   .eventContainer {
     width: 100%;
-    padding: 10px;
   }
 }
 
