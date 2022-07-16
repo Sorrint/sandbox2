@@ -28,6 +28,8 @@ burger.addEventListener("click", (event) => {
   document.body.classList.toggle("lock");
 });
 
+
+
 const root = ReactDOM.createRoot(document.querySelector(".eventContainer"));
 root.render(
   <React.StrictMode>
