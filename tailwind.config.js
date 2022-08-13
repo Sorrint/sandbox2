@@ -2,4 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx}", "./index.html"],
   plugins: [],
+  // corePlugins: {
+  //   preflight: false,
+  // },
 };
