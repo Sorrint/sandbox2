@@ -9,12 +9,14 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
         assetModuleFilename: 'assets/[hash][ext][query]',
-        clean: true
+        clean: true,
+        publicPath: '/'
     },
     devServer: {
         static: './src',
         port: 8080,
-        open: true
+        open: true,
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
@@ -34,21 +36,24 @@ module.exports = {
                     }
                 }
             },
-            // {
-            //     test: /\.css$/i,
-            //     use: ['style-loader', 'css-loader', 'postcss-loader']
-            // },
             {
-                test: /\.(s[ac]|c)ss$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             },
+            // {
+            //     test: /\.(s[ac]|c)ss$/i,
+            //     use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            // },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource'
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name].ext'
+                }
             }
         ]
     }
