@@ -1,9 +1,5 @@
 import React from 'react';
 const TableBody = ({ goods, headers }) => {
-    // Object.keys(goods).map((item) => {
-    //     Object.keys(headers).map((headline) => console.log(goods[item][headline]));
-    // });
-    // console.log(goods);
     const alignColumnName = (text) => {
         return text.length > 8 ? 'table-from-excel__column_left' : 'table-from-excel__column';
     };

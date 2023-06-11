@@ -27,7 +27,11 @@ export const Schedule = () => {
                                     alt="flag"
                                 ></img>
                             </div>
-                            <div className="race-card__country">{race.Circuit.Location.country}</div>
+                            <div className="race-card__country">
+                                {race.Circuit.Location.country === 'United States'
+                                    ? 'USA'
+                                    : race.Circuit.Location.country}
+                            </div>
                             <div className="race-card__location">{race.Circuit.Location.locality}</div>
                         </div>
                         <div className="race-card__info">

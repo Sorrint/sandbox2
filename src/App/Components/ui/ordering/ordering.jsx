@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { read, utils } from 'xlsx';
 import api from '../../../api';
 import { getGoodsObject, getHeadersObject } from '../../../utils/modifiedExcelObjects';
-import FilterForm from '../../common/filterForm.jsx';
 import TableBody from '../../common/table/tableBody.jsx';
 import TableHeader from '../../common/table/tableHeader.jsx';
-
-const urlDataBase = '../../assets/dataBase.xlsx';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 const Ordering = ({ goods, headers }) => {
     const [unsearchedItems, setUnsearchedItems] = useState({});
@@ -14,7 +12,8 @@ const Ordering = ({ goods, headers }) => {
     const [ordering, setOrdering] = useState();
     const [packages, setPackages] = useState();
 
-    useEffect(() => {
+    const handleChange = (e) => {
+        e.preventDefault();
         api.packages
             .fetchAll()
             .then((data) => {
@@ -35,7 +34,9 @@ const Ordering = ({ goods, headers }) => {
                 return headersWithPackages;
             })
             .then(async (data) => {
-                const wb = read(await (await fetch(urlDataBase)).arrayBuffer(), { WTF: 1 });
+                const file = e.target.files[0];
+                const fileBuffer = await file.arrayBuffer();
+                const wb = XLSX.read(fileBuffer, { WTF: 1 });
                 const dataBase = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 'A' });
                 return { ...data, dataBase };
             })
@@ -63,7 +64,8 @@ const Ordering = ({ goods, headers }) => {
                     setExtendedGoods(extendedGoods);
                 }
             });
-    }, []);
+    };
+
     useEffect(() => {
         if (packages && extendedGoods) {
             const ordering = packages.reduce((newObj, item) => {
@@ -81,18 +83,19 @@ const Ordering = ({ goods, headers }) => {
 
     return (
         <>
-            {ordering ? (
+            <div>База данных</div>
+            <input type="file" onChange={handleChange} />
+
+            {ordering && headers ? (
                 <div className="app__body">
                     <div className="app__container">
                         <TableHeader headers={headers} />
 
                         {Object.keys(ordering).map((goods) => (
-                            <>
-                                <details open>
-                                    <TableBody goods={ordering[goods]} headers={headers} key={goods} />
-                                    <summary>{goods}</summary>
-                                </details>
-                            </>
+                            <details open key={goods}>
+                                <TableBody goods={ordering[goods]} headers={headers} />
+                                <summary>{goods}</summary>
+                            </details>
                         ))}
                     </div>
                 </div>

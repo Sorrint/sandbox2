@@ -1,5 +1,6 @@
 export function getGoodsObject(tableObject, headersObject) {
     const row = { row: tableObject['__rowNum__'] };
+    console.log(tableObject);
 
     const changedObject = Object.keys(tableObject).reduce((goods, item) => {
         const match = Object.keys(headersObject).find((key) => headersObject[key].letter === item);

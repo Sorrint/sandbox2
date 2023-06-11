@@ -4,7 +4,7 @@ var requestOptions = {
 };
 
 const getScheduleCurrent = async () => {
-    const url = `https://ergast.com/api/f1/current.json`;
+    const url = `https://ergast.com/api/f1/2023.json`;
     let request = await fetch(url, requestOptions);
     let response = await request.text();
     let data = await JSON.parse(response);

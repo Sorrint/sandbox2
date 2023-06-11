@@ -7,7 +7,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'app.jsx'),
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'build'),
         assetModuleFilename: 'assets/[hash][ext][query]',
         clean: true,
         publicPath: '/'

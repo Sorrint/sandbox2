@@ -1,17 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { read, utils } from 'xlsx';
 import AppRibbon from '../../common/appHeader/appRibbon.jsx';
-import TableBody from '../../common/table/tableBody.jsx';
-import TableHeader from '../../common/table/tableHeader.jsx';
 import Order from '../../ui/order/order.jsx';
 import Ordering from '../../ui/ordering/ordering.jsx';
 import Distribution from '../../ui/distribution/distribution.jsx';
-import { Link, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import api from '../../../api';
 import { getGoodsObject, getHeadersObject } from '../../../utils/modifiedExcelObjects.js';
-
-const url = '../../assets/Порядовка Рубан.xls';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 const Documents = () => {
     const buttonsObject = {
@@ -36,14 +33,17 @@ const Documents = () => {
     const [ribbonButtons, setRibbonButtons] = useState({ order: { ...buttonsObject.order } });
     const [goods, setGoods] = useState();
 
-    useEffect(() => {
+    const handleChange = (e) => {
+        e.preventDefault();
         api.headers
             .fetchAll()
             .then((data) => {
                 return data;
             })
             .then(async (dataBaseHeaders) => {
-                const wb = read(await (await fetch(url)).arrayBuffer(), { WTF: 1 });
+                const file = e.target.files[0];
+                const data = await file.arrayBuffer();
+                const wb = XLSX.read(data, { WTF: 1 });
                 const order = utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 'A' });
 
                 const firstTableRow = order.find((item) => Object.values(item).find((item) => item === '№'));
@@ -60,7 +60,7 @@ const Documents = () => {
                 setTableHeaders({ ...modifiedHeaders });
                 setGoods({ ...modifiedGoods });
             });
-    }, []);
+    };
 
     useEffect(() => {
         setRibbonButtons({ ...buttonsObject });
@@ -79,6 +79,9 @@ const Documents = () => {
                 </div>
             </div>
             <div className="app__body">
+                <form>
+                    <input type="file" onChange={(e) => handleChange(e)} />
+                </form>
                 <Switch>
                     {Object.keys(buttonsObject).map((link) => (
                         <Route

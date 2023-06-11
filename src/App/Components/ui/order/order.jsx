@@ -1,6 +1,4 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { read, utils } from 'xlsx';
 import TableBody from '../../common/table/tableBody.jsx';
 import TableHeader from '../../common/table/tableHeader.jsx';
 
